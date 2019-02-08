@@ -1,5 +1,7 @@
 # VSCode-M
 
+![demo](images/demo.png)
+
 A VSCode plugin for the M programming language.
 
 ## To Use
