@@ -1,0 +1,18 @@
+{
+    "comments": {
+        "lineComment": ";"
+    },
+    "brackets": [
+        ["(", ")"]
+    ],
+    "autoClosingPairs": [
+        ["(", ")"],
+        ["\"", "\""]
+    ],
+    "autoCloseBefore": ";) \r\n\t",
+    "surroundingPairs": [
+        ["(", ")"],
+        ["\"", "\""]
+    ],
+    "wordPattern": "[^ \t\r\n\";\\(\\)]+"
+}

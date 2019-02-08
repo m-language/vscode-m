@@ -1,0 +1,67 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "M Language",
+	"patterns": [{ "include": "#expression" }],
+	"repository": {
+		"expression": {
+			"patterns": [
+				{
+					"include": "#macro-expression"
+				},
+				{
+					"include": "#list-expression"
+				},
+				{
+					"include": "#symbol-expression"
+				},
+				{
+					"include": "#symbol-literal-expression"
+				},
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"nil-expression": {
+			"patterns": [{
+				"name": "keyword.other.mlang",
+				"match": "\\([ \t\r\n]*\\)"
+			}]
+		},
+		"list-expression": {
+			"begin": "\\(([ \t\r\n]*[^ \t\r\n\";\\(\\)]+)",
+			"end": "\\)",
+			"beginCaptures": {
+				"0": { "name": "punctuation.paren.open" },
+				"1": { "name": "keyword.other.mlang" }
+			},
+			"endCaptures": {
+				"0": { "name": "punctuation.paren.close" }
+			},
+			"name": "expression.group",
+			"patterns": [{ "include": "#expression" }]
+		},
+		"symbol-expression": {
+			"patterns": [{
+				"name": "variable.other.mlang",
+				"match": "[^ \t\r\n\";\\(\\)]+"
+			}]
+		},
+		"symbol-literal-expression": {
+			"name": "string.quoted.double.mlang",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [{
+				"name": "constant.character.escape.mlang",
+				"match": "\\\\."
+			}]
+		},
+		"comment": {
+			"patterns": [{
+				"name": "comment.line.mlang",
+				"match": ";+.*"
+			}]
+		}
+	},
+	"scopeName": "source.m"
+}

@@ -1,0 +1,29 @@
+{
+    "name": "vscode-m",
+    "publisher": "aedans",
+    "displayName": "VSCode M",
+    "description": "A VSCode plugin for the M programming language.",
+    "version": "0.0.1",
+    "repository": {
+        "url": "https://github.com/m-language/vscode-m"
+    },
+    "engines": {
+        "vscode": "^1.31.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "mlang",
+            "aliases": ["M Language", "mlang"],
+            "extensions": [".m"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "mlang",
+            "scopeName": "source.m",
+            "path": "./syntaxes/mlang.tmLanguage.json"
+        }]
+    }
+}
