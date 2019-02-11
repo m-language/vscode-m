@@ -12,6 +12,9 @@
 					"include": "#list-expression"
 				},
 				{
+					"include": "#nil-expression"
+				},
+				{
 					"include": "#symbol-expression"
 				},
 				{
@@ -29,11 +32,11 @@
 			}]
 		},
 		"list-expression": {
-			"begin": "\\(([ \t\r\n]*[^ \t\r\n\";\\(\\)]+)",
+			"begin": "(\\()([ \t\r\n]*[^ \t\r\n\";\\(\\)]+)",
 			"end": "\\)",
 			"beginCaptures": {
-				"0": { "name": "punctuation.paren.open" },
-				"1": { "name": "keyword.other.mlang" }
+				"1": { "name": "punctuation.paren.open" },
+				"2": { "name": "keyword.other.mlang" }
 			},
 			"endCaptures": {
 				"0": { "name": "punctuation.paren.close" }
