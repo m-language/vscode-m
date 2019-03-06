@@ -27,7 +27,7 @@
 		},
 		"nil-expression": {
 			"patterns": [{
-				"name": "keyword.other.mlang",
+				"name": "keyword.mlang",
 				"match": "\\([ \t\r\n]*\\)"
 			}]
 		},
@@ -35,11 +35,11 @@
 			"begin": "(\\()([ \t\r\n]*[^ \t\r\n\";\\(\\)]+)",
 			"end": "\\)",
 			"beginCaptures": {
-				"1": { "name": "punctuation.paren.open" },
-				"2": { "name": "keyword.other.mlang" }
+				"1": { "name": "punctuation.bracket.round" },
+				"2": { "name": "keyword.mlang" }
 			},
 			"endCaptures": {
-				"0": { "name": "punctuation.paren.close" }
+				"0": { "name": "punctuation.bracket.round" }
 			},
 			"name": "expression.group",
 			"patterns": [{ "include": "#expression" }]
