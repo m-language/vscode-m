@@ -1,6 +1,6 @@
 # VSCode-M
 
-![demo](images/demo.png)
+![demo](images/preview.png)
 
 A VSCode plugin for the M programming language.
 
