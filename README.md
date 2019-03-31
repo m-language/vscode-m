@@ -13,3 +13,5 @@ vsce package
 ```
 
 Then go to `Extensions -> ... -> Install From VSIX...` and select `vscode-m.vsix`.
+
+Installing [Bracket Pair Colorizer 2](https://github.com/CoenraadS/Bracket-Pair-Colorizer-2) is also recommended.
