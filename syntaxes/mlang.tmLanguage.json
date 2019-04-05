@@ -18,6 +18,9 @@
 					"include": "#symbol-expression"
 				},
 				{
+					"include": "#symbol-literal-expression-2"
+				},
+				{
 					"include": "#symbol-literal-expression"
 				},
 				{
@@ -54,6 +57,15 @@
 			"name": "string.quoted.double.mlang",
 			"begin": "\"",
 			"end": "\"",
+			"patterns": [{
+				"name": "constant.character.escape.mlang",
+				"match": "\\\\."
+			}]
+		},
+		"symbol-literal-expression-2": {
+			"name": "string.quoted.double.mlang",
+			"begin": "\"\"",
+			"end": "\"\"",
 			"patterns": [{
 				"name": "constant.character.escape.mlang",
 				"match": "\\\\."
