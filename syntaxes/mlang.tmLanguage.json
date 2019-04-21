@@ -6,13 +6,7 @@
 		"expression": {
 			"patterns": [
 				{
-					"include": "#macro-expression"
-				},
-				{
 					"include": "#list-expression"
-				},
-				{
-					"include": "#nil-expression"
 				},
 				{
 					"include": "#symbol-expression"
@@ -28,14 +22,8 @@
 				}
 			]
 		},
-		"nil-expression": {
-			"patterns": [{
-				"name": "keyword.mlang",
-				"match": "\\([ \t\r\n]*\\)"
-			}]
-		},
 		"list-expression": {
-			"begin": "(\\()([ \t\r\n]*[^ \t\r\n\";\\(\\)]+)",
+			"begin": "(\\()([^ \t\r\n\";\\(\\)]*)",
 			"end": "\\)",
 			"beginCaptures": {
 				"1": { "name": "punctuation.bracket.round" },
