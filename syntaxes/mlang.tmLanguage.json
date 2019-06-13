@@ -12,9 +12,6 @@
 					"include": "#symbol-expression"
 				},
 				{
-					"include": "#symbol-literal-expression-2"
-				},
-				{
 					"include": "#symbol-literal-expression"
 				},
 				{
@@ -36,28 +33,26 @@
 			"patterns": [{ "include": "#expression" }]
 		},
 		"symbol-expression": {
+			"name": "variable.other.mlang",
 			"patterns": [{
 				"name": "variable.other.mlang",
 				"match": "[^ \t\r\n\";\\(\\)]+"
 			}]
 		},
 		"symbol-literal-expression": {
-			"name": "string.quoted.double.mlang",
+			"name": "string.quoted.mlang",
 			"begin": "\"",
 			"end": "\"",
-			"patterns": []
-		},
-		"symbol-literal-expression-2": {
-			"name": "string.quoted.double.mlang",
-			"begin": "\"\"",
-			"end": "\"\"",
-			"patterns": []
+			"patterns": [{
+				"name": "string.quoted.mlang",
+				"match": "[^\"]|\"\""
+			}]
 		},
 		"comment": {
-			"patterns": [{
-				"name": "comment.line.mlang",
-				"match": ";+.*"
-			}]
+			"name": "comment.line.mlang",
+			"begin": ";",
+			"end": "\r|\n",
+			"patterns": []
 		}
 	},
 	"scopeName": "source.m"
