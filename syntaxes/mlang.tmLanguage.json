@@ -33,11 +33,7 @@
 			"patterns": [{ "include": "#expression" }]
 		},
 		"symbol-expression": {
-			"name": "variable.other.mlang",
-			"patterns": [{
-				"name": "variable.other.mlang",
-				"match": "[^ \t\r\n\";\\(\\)]+"
-			}]
+			"match": "[^ \t\r\n\";\\(\\)]+"
 		},
 		"symbol-literal-expression": {
 			"name": "string.quoted.mlang",
