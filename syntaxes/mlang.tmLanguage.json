@@ -1,12 +1,22 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "M Language",
-	"patterns": [{ "include": "#expression" }],
+	"patterns": [
+		{
+			"include": "#expression"
+		}
+	],
 	"repository": {
 		"expression": {
 			"patterns": [
 				{
-					"include": "#list-expression"
+					"include": "#parenthesized-expression"
+				},
+				{
+					"include": "#bracketed-expression"
+				},
+				{
+					"include": "#number-expression"
 				},
 				{
 					"include": "#symbol-expression"
@@ -19,36 +29,167 @@
 				}
 			]
 		},
-		"list-expression": {
-			"begin": "(\\()([^ \t\r\n\";\\(\\)]*)",
+		"parenthesized-expression": {
+			"name": "meta.parenthesized.mlang",
+			"begin": "\\(([a-zA-Z0-9]([a-zA-Z0-9]|[!$%&*+/|:<=>?@^~'=-])*)?",
 			"end": "\\)",
 			"beginCaptures": {
-				"1": { "name": "punctuation.bracket.round" },
-				"2": { "name": "keyword.mlang" }
+				"0": {
+					"name": "punctuation.mlang"
+				},
+				"1": {
+					"name": "keyword.mlang"
+				}
 			},
 			"endCaptures": {
-				"0": { "name": "punctuation.bracket.round" }
+				"0": {
+					"name": "punctuation.mlang"
+				}
 			},
-			"name": "expression.group",
-			"patterns": [{ "include": "#expression" }]
+			"patterns": [
+				{
+					"include": "#expression"
+				}
+			]
+		},
+		"bracketed-expression": {
+			"name": "meta.bracketed.mlang",
+			"begin": "\\[",
+			"end": "\\]",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.mlang"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.mlang"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#atomic-expression"
+				}
+			]
+		},
+		"number-expression": {
+			"name": "constant.numeric.mlang",
+			"match": "[-+]?([0-9]*\\.[0-9]+|[0-9]+)"
 		},
 		"symbol-expression": {
-			"match": "[^ \t\r\n\";\\(\\)]+"
+			"name": "variable.mlang",
+			"match": "[a-zA-Z0-9]([a-zA-Z0-9]|[!$%&*+/|:<=>?@^~'=-])*"
 		},
 		"symbol-literal-expression": {
 			"name": "string.quoted.mlang",
 			"begin": "\"",
 			"end": "\"",
-			"patterns": [{
-				"name": "string.quoted.mlang",
-				"match": "[^\"]|\"\""
-			}]
+			"patterns": [
+				{
+					"name": "string.quoted.mlang",
+					"match": "[^\"]|\"\""
+				}
+			]
+		},
+		"doc-expression": {
+			"patterns": [
+				{
+					"include": "#parenthesized-expression"
+				},
+				{
+					"include": "#bracketed-expression"
+				},
+				{
+					"include": "#number-expression"
+				},
+				{
+					"include": "#symbol-literal-expression"
+				},
+				{
+					"include": "#comment"
+				}
+			]
+		},
+		"comment-char": {
+			"name": "comment.mlang",
+			"match": "."
 		},
 		"comment": {
-			"name": "comment.line.mlang",
-			"begin": ";",
+			"patterns": [
+				{
+					"include": "#doc-comment"
+				},
+				{
+					"include": "#parenthesized-block-comment"
+				},
+				{
+					"include": "#bracketed-block-comment"
+				},
+				{
+					"include": "#line-comment"
+				}
+			]
+		},
+		"parenthesized-block-comment": {
+			"name": "meta.comment.block.parenthesized.mlang",
+			"begin": "#\\(",
+			"end": "\\)",
+			"beginCaptures": {
+				"0": {
+					"name": "comment.block.mlang"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "comment.block.mlang"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#doc-expression"
+				},
+				{
+					"include": "#comment-char"
+				}
+			]
+		},
+		"bracketed-block-comment": {
+			"name": "meta.comment.block.bracketed.mlang",
+			"begin": "#\\[",
+			"end": "\\]",
+			"beginCaptures": {
+				"0": {
+					"name": "comment.block.mlang"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "comment.block.mlang"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#doc-expression"
+				},
+				{
+					"include": "#comment-char"
+				}
+			]
+		},
+		"line-comment": {
+			"name": "meta.comment.line.mlang",
+			"begin": "#",
 			"end": "\r|\n",
-			"patterns": []
+			"beginCaptures": {
+				"0": {
+					"name": "comment.line.mlang"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#comment-char"
+				}
+			]
 		}
 	},
 	"scopeName": "source.m"
