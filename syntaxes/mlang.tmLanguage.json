@@ -22,7 +22,10 @@
 					"include": "#symbol-expression"
 				},
 				{
-					"include": "#symbol-literal-expression"
+					"include": "#string-expression"
+				},
+				{
+					"include": "#char-expression"
 				},
 				{
 					"include": "#comment"
@@ -80,7 +83,7 @@
 			"name": "variable.mlang",
 			"match": "[a-zA-Z0-9]([a-zA-Z0-9]|[!$%&*+/|:<=>?@^~'=-])*"
 		},
-		"symbol-literal-expression": {
+		"string-expression": {
 			"name": "string.quoted.mlang",
 			"begin": "\"",
 			"end": "\"",
@@ -88,6 +91,17 @@
 				{
 					"name": "string.quoted.mlang",
 					"match": "[^\"]|\"\""
+				}
+			]
+		},
+		"char-expression": {
+			"name": "string.quoted.single.mlang",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "string.quoted.single.mlang",
+					"match": "[^']|''"
 				}
 			]
 		},
